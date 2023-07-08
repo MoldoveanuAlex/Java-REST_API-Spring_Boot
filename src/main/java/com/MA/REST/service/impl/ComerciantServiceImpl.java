@@ -1,5 +1,6 @@
 package com.MA.REST.service.impl;
 
+import com.MA.REST.exception.ComerciantNotFoundException;
 import com.MA.REST.model.Comerciant;
 import com.MA.REST.repository.ComerciantRepository;
 import com.MA.REST.service.ComerciantService;
@@ -36,6 +37,8 @@ public class ComerciantServiceImpl implements ComerciantService{
 
     @Override
     public Comerciant getComerciant(String comerciantID) {
+        if(comerciantRepository.findById(comerciantID).isEmpty())
+            throw new ComerciantNotFoundException("Comerciantul nu exista!");
         return comerciantRepository.findById(comerciantID).get();
     }
 

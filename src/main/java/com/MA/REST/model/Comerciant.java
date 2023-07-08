@@ -25,7 +25,6 @@ public class Comerciant {
     }
 
 
-
     public String getComerciantId() {
         return comerciantId;
     }
