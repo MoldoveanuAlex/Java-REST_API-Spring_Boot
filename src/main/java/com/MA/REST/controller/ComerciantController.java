@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/comerciant")
+@CrossOrigin
 public class ComerciantController {
 
     ComerciantService comerciantService;
@@ -19,17 +20,17 @@ public class ComerciantController {
         this.comerciantService = comerciantService;
     }
 
-    @GetMapping("{comerciantID}")
-    public ResponseEntity<Object> getComerciantDetalii(@PathVariable("comerciantID") String comerciantID){
-        return ResponseHandler.responseBuilder("Datele cerute sunt aici.", HttpStatus.OK, comerciantService.getComerciant(comerciantID));
+    @GetMapping("{id}")
+    public ResponseEntity<Object> getComerciantDetalii(@PathVariable("id") String id){
+        return ResponseHandler.responseBuilder("Datele cerute sunt aici.", HttpStatus.OK, comerciantService.getComerciant(id));
     }
 
-    @GetMapping()
+    @GetMapping("getAllComerciantDetalii")
     public List<Comerciant> getAllComerciantDetalii(){
         return comerciantService.getAllComercianti();
     }
 
-    @PostMapping
+    @PostMapping("createComerciant")
     public String createComerciant(@RequestBody Comerciant comerciant){
         comerciantService.createComerciant(comerciant);
         return "Comerciant adaugat cu succes!";
@@ -41,9 +42,9 @@ public class ComerciantController {
         return "Comerciant updatat cu succes!";
     }
 
-    @DeleteMapping("{comerciantID}")
-    public String deleteComerciant(@PathVariable("comerciantID") String comerciantID){
-        comerciantService.deleteComerciant(comerciantID);
+    @DeleteMapping("{id}")
+    public String deleteComerciant(@PathVariable("id") String id){
+        comerciantService.deleteComerciant(id);
          return "Comerciant sters cu succes!";
     }
 }

@@ -18,9 +18,10 @@ public class ComerciantServiceImpl implements ComerciantService{
     }
 
     @Override
-    public String createComerciant(Comerciant comerciant) {
-        comerciantRepository.save(comerciant);
-        return "Comerciant creat cu succes!";
+    public Comerciant createComerciant(Comerciant comerciant) {
+//        comerciantRepository.save(comerciant);
+//        return "Comerciant creat cu succes!";
+        return comerciantRepository.save(comerciant);
     }
 
     @Override
@@ -30,16 +31,16 @@ public class ComerciantServiceImpl implements ComerciantService{
     }
 
     @Override
-    public String deleteComerciant(String comerciantID) {
-        comerciantRepository.deleteById(comerciantID);
+    public String deleteComerciant(String id) {
+        comerciantRepository.deleteById(id);
         return "Comerciant sters cu succes!";
     }
 
     @Override
-    public Comerciant getComerciant(String comerciantID) {
-        if(comerciantRepository.findById(comerciantID).isEmpty())
+    public Comerciant getComerciant(String id) {
+        if(comerciantRepository.findById(id).isEmpty())
             throw new ComerciantNotFoundException("Comerciantul nu exista!");
-        return comerciantRepository.findById(comerciantID).get();
+        return comerciantRepository.findById(id).get();
     }
 
     @Override

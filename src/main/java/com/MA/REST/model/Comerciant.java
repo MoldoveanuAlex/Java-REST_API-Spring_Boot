@@ -1,14 +1,13 @@
 package com.MA.REST.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "comerciant_info")
 public class Comerciant {
     @Id
-    private String comerciantId;
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    private int id;
     private String comerciantNume;
     private String comerciantAdresa;
     private String comerciantTelefon;
@@ -17,20 +16,20 @@ public class Comerciant {
     public Comerciant() {
     }
 
-    public Comerciant(String comerciantID, String comerciantNume, String comerciantAdresa, String comerciantTelefon) {
-        this.comerciantId = comerciantID;
+    public Comerciant(int id, String comerciantNume, String comerciantAdresa, String comerciantTelefon) {
+        this.id = id;
         this.comerciantNume = comerciantNume;
         this.comerciantAdresa = comerciantAdresa;
         this.comerciantTelefon = comerciantTelefon;
     }
 
 
-    public String getComerciantId() {
-        return comerciantId;
+    public int getid() {
+        return id;
     }
 
-    public void setComerciantId(String comerciantId) {
-        this.comerciantId = comerciantId;
+    public void setid(int id) {
+        this.id = id;
     }
 
     public String getComerciantNume() {
