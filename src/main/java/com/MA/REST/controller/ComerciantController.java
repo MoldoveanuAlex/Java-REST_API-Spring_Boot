@@ -1,7 +1,10 @@
 package com.MA.REST.controller;
 
 import com.MA.REST.model.Comerciant;
+import com.MA.REST.response.ResponseHandler;
 import com.MA.REST.service.ComerciantService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,8 +20,8 @@ public class ComerciantController {
     }
 
     @GetMapping("{comerciantID}")
-    public Comerciant getComerciantDetalii(@PathVariable("comerciantID") String comerciantID){
-        return comerciantService.getComerciant(comerciantID);
+    public ResponseEntity<Object> getComerciantDetalii(@PathVariable("comerciantID") String comerciantID){
+        return ResponseHandler.responseBuilder("Datele cerute sunt aici.", HttpStatus.OK, comerciantService.getComerciant(comerciantID));
     }
 
     @GetMapping()
