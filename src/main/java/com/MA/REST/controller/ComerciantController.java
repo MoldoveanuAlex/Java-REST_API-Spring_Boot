@@ -36,7 +36,7 @@ public class ComerciantController {
         return "Comerciant adaugat cu succes!";
     }
 
-    @PutMapping
+    @PutMapping("updateComerciant")
     public String updateComerciant(@RequestBody Comerciant comerciant){
         comerciantService.updateComerciant(comerciant);
         return "Comerciant updatat cu succes!";
